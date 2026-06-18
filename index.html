@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>CROWNACE - Online Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 10px;
+            overflow-x: hidden;
+            background-image: url('viber_image_2026-05-31_14-46-05-735.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 15px 10px 8px;
+            position: relative;
+        }
+
+        .header-logo {
+            display: inline-block;
+            vertical-align: middle;
+            height: 120px;
+            width: 120px;
+            margin-right: 6px;
+        }
+
+        .header-text {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .header .brand-name {
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 20px rgba(15, 52, 96, 0.12);
+            line-height: 1.1;
+        }
+
+        .header .brand-name i {
+            -webkit-text-fill-color: initial;
+            color: #f5576c;
+            font-size: 0.6em;
+        }
+
+        .header .tagline {
+            font-size: clamp(0.7rem, 1.2vw, 1.2rem);
+            font-weight: 600;
+            color: #16213e;
+            letter-spacing: 3px;
+            margin-top: 2px;
+            opacity: 0.8;
+        }
+
+        .header .tagline i {
+            color: #f5576c;
+            margin: 0 3px;
+        }
+
+        .header .sub-brand {
+            font-size: clamp(0.65rem, 0.8vw, 0.9rem);
+            font-weight: 500;
+            color: #555;
+            letter-spacing: 4px;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        .header .sub-brand i {
+            color: #4facfe;
+            margin-right: 4px;
+        }
+
+        .header-divider {
+            width: 50px;
+            height: 2.5px;
+            background: linear-gradient(90deg, #f5576c, #4facfe);
+            margin: 8px auto 0;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-logo {
+                height: 70px;
+                width: 70px;
+                margin-right: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-logo {
+                height: 55px;
+                width: 55px;
+                margin-right: 3px;
+            }
+            .header {
+                padding: 10px 5px 5px;
+            }
+            .header .brand-name {
+                font-size: 1.8rem !important;
+            }
+            .header .sub-brand {
+                font-size: 0.65rem !important;
+            }
+            .header .tagline {
+                font-size: 0.6rem !important;
+            }
+        }
+
+        /* ===== STICKY TAB BAR ===== */
+        .tab-bar-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 8px 5px 6px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            margin: 0 -10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .tab-bar-wrapper.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .tab-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px 8px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5px 8px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: clamp(0.7rem, 0.9vw, 0.95rem);
+            font-weight: 600;
+            color: #1a1a2e;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .tab-btn i {
+            font-size: 0.8em;
+            color: #4facfe;
+            transition: color 0.25s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(79, 172, 254, 0.08);
+            color: #0f3460;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #f5576c, #4facfe);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(245, 87, 108, 0.25);
+        }
+
+        .tab-btn.active i {
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .tab-btn {
+                padding: 5px 10px;
+                font-size: 0.7rem !important;
+                gap: 3px;
+            }
+            .tab-btn i {
+                font-size: 0.7em;
+            }
+            .tab-bar {
+                gap: 4px 5px;
+                padding: 4px 6px;
+                border-radius: 20px;
+            }
+        }
+
+        /* ===== GALLERY GRID - RESPONSIVE ===== */
+        .gallery {
+            display: grid;
+            gap: 12px;
+            padding: 15px 3px 30px;
+            perspective: 1200px;
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 10px 2px 20px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                padding: 12px 4px 25px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+                padding: 18px 5px 30px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .gallery {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+                padding: 20px 5px 35px;
+            }
+        }
+
+        /* ===== 3D CARD ===== */
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg) scale(1);
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 3 / 4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        .gallery-item:hover {
+            transform: rotateX(4deg) rotateY(6deg) scale(1.03) translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 40px rgba(79, 172, 254, 0.08);
+            border-color: rgba(79, 172, 254, 0.2);
+        }
+
+        .gallery-item .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-height: 0;
+            transform-style: preserve-3d;
+        }
+
+        .gallery-item .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: scale(1);
+        }
+
+        .gallery-item:hover .image-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .gallery-item .image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.7s ease;
+        }
+
+        .gallery-item:hover .image-wrapper::after {
+            left: 200%;
+        }
+
+        .gallery-item .info {
+            padding: 6px 10px 8px;
+            flex-shrink: 0;
+            transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            position: relative;
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item .info {
+                padding: 4px 6px 6px;
+            }
+        }
+
+        .gallery-item .caption {
+            font-size: clamp(0.7rem, 0.7vw, 0.8rem);
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: 0.2px;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item .caption {
+                font-size: 0.7rem !important;
+                white-space: normal;
+                line-height: 1.2;
+            }
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 3px;
+            padding-top: 3px;
+            border-top: 1.5px solid rgba(245, 87, 108, 0.1);
+        }
+
+        .gallery-item .price {
+            font-size: clamp(0.7rem, 0.8vw, 0.9rem);
+            font-weight: 800;
+            color: #f5576c;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item .price {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        .gallery-item .price .currency {
+            color: #888;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+
+        /* ===== ORDER BUTTON ===== */
+        .order-btn {
+            background: linear-gradient(135deg, #4facfe, #43e97b);
+            border: none;
+            color: #fff;
+            font-size: clamp(0.6rem, 0.6vw, 0.7rem);
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+
+        @media (max-width: 480px) {
+            .order-btn {
+                font-size: 0.6rem !important;
+                padding: 4px 8px !important;
+                gap: 3px;
+            }
+            .order-btn i {
+                font-size: 0.55rem !important;
+            }
+        }
+
+        .order-btn i {
+            font-size: 0.55rem;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(67, 233, 123, 0.35);
+            background: linear-gradient(135deg, #43e97b, #4facfe);
+        }
+
+        .order-btn:active {
+            transform: scale(0.95);
+        }
+
+        .gallery-item .magic-sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #f5576c, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .magic-sparkle {
+            animation: sparkleFloat 2.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            30% { opacity: 0.7; transform: translateY(-25px) scale(1.3); }
+            70% { opacity: 0.5; transform: translateY(-50px) scale(0.9); }
+            100% { opacity: 0; transform: translateY(-75px) scale(0.3); }
+        }
+
+        /* ================================================================
+               MODAL
+               ================================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            padding: 10px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            max-height: 95vh;
+            background: #1a1a2e;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.7) rotateY(-15deg); }
+            to { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+
+        /* ===== MODAL IMAGE ===== */
+        .modal-image-wrap {
+            flex: 1.2;
+            min-height: 250px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 3 / 4;
+            cursor: pointer;
+        }
+
+        .modal-image-wrap .slider-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-image-wrap .slider-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            width: 100%;
+        }
+
+        .modal-image-wrap .slider-track img {
+            flex: 0 0 100%;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+            cursor: pointer;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-arrow:active {
+            transform: translateY(-50%) scale(0.9);
+        }
+
+        .slider-arrow-left {
+            left: 8px;
+        }
+
+        .slider-arrow-right {
+            right: 8px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slider-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .slider-dots .dot.active {
+            background: #fff;
+            transform: scale(1.3);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .slider-dots .dot:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .slider-counter {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 5;
+            letter-spacing: 0.5px;
+            pointer-events: none;
+        }
+
+        /* ===== ZOOM MODAL ===== */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            padding: 10px;
+        }
+
+        .zoom-overlay.active {
+            display: flex;
+        }
+
+        .zoom-content {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 3 / 4;
+            background: #000;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: zoomPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes zoomPop {
+            from { opacity: 0; transform: scale(0.7); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .zoom-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .zoom-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .zoom-close:hover {
+            background: rgba(245, 87, 108, 0.4);
+            transform: rotate(90deg) scale(1.05);
+            border-color: rgba(245, 87, 108, 0.4);
+        }
+
+        .zoom-counter {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .zoom-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 5;
+            opacity: 0.5;
+        }
+
+        .zoom-arrow:hover {
+            background: rgba(255, 255, 255, 0.25);
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .zoom-arrow-left {
+            left: 8px;
+        }
+
+        .zoom-arrow-right {
+            right: 8px;
+        }
+
+        @media (max-width: 480px) {
+            .zoom-content {
+                max-width: 100%;
+                max-height: 90vh;
+                border-radius: 10px;
+            }
+            .zoom-close {
+                width: 34px;
+                height: 34px;
+                font-size: 1rem;
+                top: 8px;
+                right: 10px;
+            }
+            .zoom-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            .zoom-arrow-left {
+                left: 4px;
+            }
+            .zoom-arrow-right {
+                right: 4px;
+            }
+            .zoom-counter {
+                font-size: 0.65rem;
+                padding: 2px 10px;
+                bottom: 10px;
+            }
+        }
+
+        /* ---- RIGHT SIDE: INFO ---- */
+        .modal-info-wrap {
+            flex: 1;
+            padding: 20px 18px 16px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            color: #1a1a2e;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(245, 87, 108, 0.15);
+            color: #f5576c;
+            transform: rotate(90deg);
+        }
+
+        /* ===== MODAL INFO BODY ===== */
+        .modal-info-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            padding-top: 4px;
+        }
+
+        .modal-info-body .product-name {
+            font-size: clamp(1.3rem, 1.8vw, 2.2rem);
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-top: 10px;
+            margin-bottom: 2px;
+            flex-shrink: 0;
+        }
+
+        .modal-info-body .product-desc {
+            font-size: clamp(0.85rem, 0.9vw, 1rem);
+            font-weight: 500;
+            color: #444;
+            line-height: 1.7;
+            white-space: pre-line;
+            word-wrap: break-word;
+            overflow-y: auto;
+            padding: 4px 6px 4px 0;
+            text-align: justify;
+            letter-spacing: 0.2px;
+            flex: 1;
+            min-height: 40px;
+            max-height: 200px;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 4px;
+        }
+
+        .modal-info-body .product-desc::-webkit-scrollbar {
+            width: 4px;
+        }
+        .modal-info-body .product-desc::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+        .modal-info-body .product-desc::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .modal-info-body .product-price {
+            font-size: clamp(1.3rem, 2vw, 2.2rem);
+            font-weight: 900;
+            color: #f5576c;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .modal-info-body .product-price .currency {
+            color: #888;
+            font-size: 0.65em;
+            font-weight: 600;
+        }
+
+        .modal-note-area {
+            margin-top: 4px;
+            padding: 6px 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+            font-size: clamp(0.75rem, 0.7vw, 0.85rem);
+            color: #333;
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .modal-note-area i {
+            color: #4facfe;
+            margin-right: 6px;
+        }
+
+        .modal-note-area .note-content {
+            display: inline;
+        }
+
+        .modal-contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1.5px solid rgba(0, 0, 0, 0.06);
+            flex-shrink: 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 5px 12px;
+            border-radius: 30px;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+            gap: 6px;
+        }
+
+        .contact-item:hover {
+            background: #fff;
+            border-color: #ced4da;
+        }
+
+        .contact-item .label {
+            font-size: clamp(0.7rem, 0.65vw, 0.8rem);
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-item .label i {
+            font-size: 0.85rem;
+        }
+
+        .contact-item .value {
+            font-size: clamp(0.7rem, 0.65vw, 0.8rem);
+            color: #1a1a2e;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-item .value .phone-number {
+            font-weight: 700;
+            color: #0f3460;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-btn, .telegram-btn, .viber-btn {
+            background: none;
+            border: none;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: clamp(0.6rem, 0.55vw, 0.7rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .copy-btn {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .copy-btn:hover {
+            background: #4facfe;
+            color: #fff;
+        }
+
+        .telegram-btn {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .telegram-btn:hover {
+            background: #0077b3;
+            transform: scale(1.02);
+        }
+
+        .viber-btn {
+            background: #7360f2;
+            color: #fff;
+        }
+
+        .viber-btn:hover {
+            background: #5d4bd6;
+            transform: scale(1.02);
+        }
+
+        .telegram-btn i, .viber-btn i {
+            font-size: 0.75rem;
+        }
+
+        /* ===== RESPONSIVE MODAL ===== */
+        @media (max-width: 768px) {
+            .modal-content {
+                flex-direction: column;
+                max-height: 95vh;
+                border-radius: 14px;
+            }
+
+            .modal-image-wrap {
+                flex: 0 0 38%;
+                min-height: 160px;
+                aspect-ratio: 3 / 4;
+            }
+
+            .modal-info-wrap {
+                flex: 1;
+                padding: 14px 14px 12px;
+                min-height: 160px;
+            }
+
+            .modal-close {
+                top: 4px;
+                right: 8px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.85rem;
+            }
+
+            .modal-info-body .product-name {
+                font-size: 1.1rem;
+                margin-top: 6px;
+            }
+
+            .modal-info-body .product-desc {
+                font-size: 0.8rem;
+                line-height: 1.5;
+                max-height: 120px;
+                min-height: 30px;
+            }
+
+            .modal-info-body .product-price {
+                font-size: 1.1rem;
+            }
+
+            .modal-note-area {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+                margin-top: 4px;
+            }
+
+            .slider-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7rem;
+            }
+            .slider-arrow-left {
+                left: 4px;
+            }
+            .slider-arrow-right {
+                right: 4px;
+            }
+            .slider-dots .dot {
+                width: 5px;
+                height: 5px;
+            }
+            .slider-counter {
+                font-size: 0.6rem;
+                padding: 2px 8px;
+                top: 6px;
+            }
+            .contact-item {
+                padding: 4px 10px;
+            }
+            .contact-item .label {
+                font-size: 0.65rem;
+            }
+            .contact-item .value {
+                font-size: 0.65rem;
+            }
+            .copy-btn, .telegram-btn, .viber-btn {
+                font-size: 0.55rem;
+                padding: 2px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                border-radius: 10px;
+                max-height: 98vh;
+            }
+            .modal-image-wrap {
+                flex: 0 0 32%;
+                min-height: 120px;
+                aspect-ratio: 3 / 4;
+            }
+            .modal-info-wrap {
+                padding: 10px 10px 8px;
+                min-height: 120px;
+            }
+            .modal-info-body .product-name {
+                font-size: 1rem !important;
+                margin-top: 4px;
+            }
+            .modal-info-body .product-desc {
+                font-size: 0.8rem !important;
+                line-height: 1.5;
+                max-height: 80px;
+                min-height: 20px;
+                padding: 2px 4px 2px 0;
+            }
+            .modal-info-body .product-price {
+                font-size: 1rem !important;
+            }
+            .modal-note-area {
+                font-size: 0.7rem !important;
+                padding: 4px 8px;
+                margin-top: 2px;
+                border-left-width: 3px;
+            }
+            .modal-contact-options {
+                gap: 3px;
+                margin-top: 4px;
+                padding-top: 4px;
+            }
+            .contact-item {
+                padding: 3px 8px;
+                flex-wrap: wrap;
+                gap: 3px;
+            }
+            .contact-item .label {
+                font-size: 0.65rem !important;
+            }
+            .contact-item .value {
+                font-size: 0.65rem !important;
+            }
+            .copy-btn, .telegram-btn, .viber-btn {
+                font-size: 0.55rem !important;
+                padding: 2px 6px !important;
+            }
+            .slider-arrow {
+                width: 24px;
+                height: 24px;
+                font-size: 0.6rem;
+            }
+            .slider-dots {
+                gap: 4px;
+                padding: 3px 8px;
+                bottom: 6px;
+            }
+            .slider-dots .dot {
+                width: 5px;
+                height: 5px;
+            }
+            .slider-counter {
+                font-size: 0.55rem;
+                padding: 2px 8px;
+                top: 4px;
+            }
+            .modal-close {
+                width: 26px;
+                height: 26px;
+                font-size: 0.7rem;
+                top: 3px;
+                right: 6px;
+            }
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.3); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #f5576c, #4facfe); border-radius: 10px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <img src="logo.png" alt="Logo" class="header-logo" />
+        <div class="header-text">
+            <div class="brand-name">CROWNACE</div>
+            <div class="sub-brand"><i class="fas fa-shopping-bag"></i> ONLINE SHOP</div>
+            <div class="tagline"><i class="fas fa-shield-alt"></i> SHOP WITH CONFIDENCE <i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="header-divider"></div>
+    </div>
+
+    <!-- STICKY TAB BAR -->
+    <div class="tab-bar-wrapper" id="tabBarWrapper">
+        <div class="tab-bar" id="tabBar">
+            <button class="tab-btn active" data-tab="all"><i class="fas fa-th"></i> အားလုံး</button>
+            <button class="tab-btn" data-tab="women"><i class="fas fa-female"></i> အမျိုးသမီးအိတ်</button>
+            <button class="tab-btn" data-tab="men"><i class="fas fa-male"></i> အမျိုးသားအိတ်</button>
+            <button class="tab-btn" data-tab="cosmetics"><i class="fas fa-spa"></i> အလှကုန်</button>
+            <button class="tab-btn" data-tab="handmade"><i class="fas fa-hand-holding-heart"></i> Handmade</button>
+            <button class="tab-btn" data-tab="other"><i class="fas fa-ellipsis-h"></i> အခြား</button>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery" id="galleryContainer"></div>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content" id="modalContent">
+        <div class="modal-image-wrap" id="modalImageWrap">
+            <div class="slider-counter" id="sliderCounter">1 / 1</div>
+            <button class="slider-arrow slider-arrow-left" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow slider-arrow-right" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack"></div>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+
+        <div class="modal-info-wrap">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-info-body">
+                <div class="product-name" id="modalCaption"></div>
+                <div class="product-desc" id="modalDescription"></div>
+                <div class="product-price" id="modalPrice"></div>
+                <div class="modal-note-area">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="note-content" id="modalNoteContent">
+                       ပစ္စည်များကို မှာယူမည်ဆိုပါက အောက်ပါဖုန်းနံပါတ်၊Viber နဲ့ Telegram တို့ကိုနှိပ်၍မှာယူနိုင်ပါပြီး။
+                    </span>
+                </div>
+                <div class="modal-contact-options">
+                    <div class="contact-item">
+                        <span class="label"><i class="fas fa-phone-alt"></i> ဖုန်းနံပါတ်</span>
+                        <span class="value">
+                            <span class="phone-number" id="contactPhone">+959775516672</span>
+                            <button class="copy-btn" id="copyPhoneBtn"><i class="fas fa-copy"></i> Copy</button>
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label"><i class="fab fa-telegram-plane"></i> Telegram</span>
+                        <span class="value">
+                            <button class="telegram-btn" id="telegramBtn"><i class="fab fa-telegram-plane"></i> ဆက်သွယ်မည်</button>
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label"><i class="fab fa-viber"></i> Viber</span>
+                        <span class="value">
+                            <button class="viber-btn" id="viberBtn"><i class="fab fa-viber"></i> ဆက်သွယ်မည်</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ZOOM MODAL ===== -->
+<div class="zoom-overlay" id="zoomOverlay">
+    <div class="zoom-content" id="zoomContent">
+        <button class="zoom-close" id="zoomClose"><i class="fas fa-times"></i></button>
+        <button class="zoom-arrow zoom-arrow-left" id="zoomPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="zoom-arrow zoom-arrow-right" id="zoomNext"><i class="fas fa-chevron-right"></i></button>
+        <img id="zoomImage" src="" alt="Zoom Image" />
+        <div class="zoom-counter" id="zoomCounter">1 / 1</div>
+    </div>
+</div>
+
+<script>
+    // ================================================================
+    //  PRODUCT DATA
+    // ================================================================
+    const galleryImages = [
+        { 
+            src: 'Image/SF-Fashion/Display 1.jpeg', 
+            additionalImages: ['Image/SF-Fashion/Display 1.jpeg', 'Image/SF-Fashion/Display 2.jpeg', 'Image/SF-Fashion/Display 3.jpeg'],
+            caption: 'Simple • Classy • Everyday Elegant', 
+            description: `ဘယ် Outfit နဲ့မဆို အလွယ်တကူလိုက်ဖက်တဲ့ Stripe Bag လေး
+Premium Quality 
+Office / Daily Use အတွက် Perfect
+Size-34 x 12.5 x 25 cm
+ရန်ကုန်မြို့အတွင်း အိမ်ရောက်ငွေချေရပါတယ်ရှင့်။`,
+            price: 49900, 
+            category: 'women' 
+        },
+        { 
+            src: 'Image/Jiehang/JH1.jpeg', 
+            additionalImages: ['Image/Jiehang/JH1.jpeg', 'Image/Jiehang/JH2.jpeg', 'Image/Jiehang/JH3.jpeg','Image/Jiehang/JH4.jpeg','Image/Jiehang/JH6.jpeg'],
+            caption: 'JIEHANG', 
+            description: `✨ ဘယ်လို Outfit ဝတ်ဝတ်... အဆုံးသတ်ကို JIEHANG နဲ့ပဲ ပြီးပြည့်စုံစေလိုက်ပါ။
+🤎 Elegant Design
+🤎 Premium Look
+🤎 Daily Use အတွက် အဆင်ပြေတဲ့ Size
+🤎 Color စုံစုံလင်လင်
+အရောင်တစ်ရောင်ချင်းစီက ကိုယ်ပိုင် Style ကို ဖော်ပြပေးနိုင်ပြီး ကိုင်လိုက်တာနဲ့ သပ်ရပ်တဲ့အသွင်အပြင်ကို ပေးစွမ်းပါတယ်။
+💝 Quality + Design + Fashion ကို တစ်လုံးတည်းမှာ ရနိုင်တဲ့ JIEHANG Crossbody Bag`,
+            price: 34000, 
+            category: 'women' 
+        },
+        { 
+            src: 'Image/JIELSH/JIELSH-3.jpeg', 
+            additionalImages: ['Image/JIELSH/JIELSH-1.jpeg', 'Image/JIELSH/JIELSH-2.jpeg', 'Image/JIELSH/JIELSH-3.jpeg','Image/JIELSH/JIELSH-4.jpeg','Image/JIELSH/JIELSH-5.jpeg','Image/JIELSH/JIELSH-6.jpeg'],
+            caption: 'JIELSH', 
+            description: `👜 JIELSH Water-Resistant Tote Bag
+နေ့စဉ်သုံးဖို လှပပြီး အသုံးဝင်တဲ့ Tote Bag တစ်လုံးကို ရှာနေပါသလား?
+မိုရေစိုခံ အကြမ်းခံမဲ့အိတ်လေး‌တွေရှာနေပါသလား?
+✨ Water-Resistant Fabric
+✨ Lightweight (0.22kg)
+✨ Large Capacity
+✨ Multi-Pocket Design
+✨ Hand Carry & Crossbody 2-Way Use
+📱 ဖုန်း၊ Cosmetic၊ Umbrella၊ Wallet နဲ့ နေ့စဉ်လိုအပ်တဲ့ပစ္စည်းတွေကို အလွယ်တကူ ထည့်သွားနိုင်ပါတယ်။
+🌈 Available Colors
+💚 Olive Green
+🌸 Soft Pink
+💜 Deep Lavender
+🩵 Sky Blue
+🩶 Charcoal Gray
+🖤 Obsidian Black
+✔️ Office
+✔️ University
+✔️ Travel
+✔️ Shopping
+✔️ Everyday Use`,
+            price: 29900, 
+            category: 'women' 
+        },
+        { 
+            src: 'Image/4.jpeg', 
+            additionalImages: ['Image/4.jpeg', 'Image/JH1.jpeg', 'Image/JH3.jpeg'],
+            caption: 'ပင်လယ်ကမ်းခြေ', 
+            description: `သန္တာကျောက်ဆောင်နှင့် ကြည်လင်သောရေပြင်တို့ရဲ့ လှပမှုကို သယ်ဆောင်ထားတဲ့ ဒီအိတ်ဟာ သင့်ကို ပင်လယ်ခရီးဆောင်တစ်ယောက်လို ခံစားရစေပါလိမ့်မယ်။
+
+အပြာရောင်နဲ့ အဖြူရောင်တို့ကို ပေါင်းစပ်ထားတဲ့ ဒီဇိုင်းဟာ နွေရာသီရဲ့ လန်းဆန်းမှုကို ဖော်ကျူးပေးနေပါတယ်။
+
+ပင်လယ်ကမ်းခြေကို သွားတဲ့အခါမျိုးမှာ ဒီအိတ်လေးနဲ့ ဆောင်သွားရင် ဓာတ်ပုံတွေမှာလည်း အရမ်းလှမှာပါ။`,
+            price: 44975, 
+            category: 'other' 
+        },
+        { 
+            src: 'Image/1.jpeg', 
+            additionalImages: ['Image/1.jpeg', 'Image/2.jpeg', 'Image/Display 1.jpeg'],
+            caption: 'မြို့ပြရှုခင်း', 
+            description: `ခေတ်မီအဆောက်အအုံများနှင့် အလင်းရောင်တို့ရဲ့ လှပမှုကို ဖမ်းစားထားတဲ့ ဒီအိတ်ဟာ မြို့ပြပုံရိပ်ကို ထင်ဟပ်စေပါတယ်။
+
+ခေတ်မီဆန်းသစ်တဲ့ ဒီဇိုင်းဟာ မြို့ထဲမှာ အလုပ်သွားတဲ့အခါ၊ ဈေးဝယ်ထွက်တဲ့အခါမျိုးမှာ သင့်ကို ဆန်းသစ်တဲ့ အသွင်ကို ပေးစွမ်းမှာပါ။`,
+            price: 25999, 
+            category: 'women' 
+        },
+        { 
+            src: 'Image/2.jpeg', 
+            additionalImages: ['Image/2.jpeg', 'Image/4.jpeg', 'Image/JH1.jpeg'],
+            caption: 'တောတွင်းခရီး', 
+            description: `သစ်ပင်များကြားမှ နေရောင်ခြည်တွေ ဖြာထွက်နေတဲ့ သဘာဝအလှကို ဒီအိတ်မှာ မြင်တွေ့ရမှာပါ။
+
+သစ်တောစိမ်းလန်းမှုကို သယ်ဆောင်ထားတဲ့ ဒီအိတ်ဟာ သဘာဝကို ချစ်မြတ်နိုးသူတွေအတွက် အထူးသင့်တော်ပါတယ်။
+
+ပေါ့ပါးပြီး ခိုင်ခံ့တဲ့ ပစ္စည်းတွေနဲ့ ပြုလုပ်ထားလို့ ခရီးရှည်တွေမှာလည်း အသုံးပြုလို့ရပါတယ်။`,
+            price: 18925, 
+            category: 'men' 
+        },
+        { 
+            src: 'Image/JIELSH-1.jpeg', 
+            additionalImages: ['Image/JIELSH-1.jpeg', 'Image/Same_prompt_+_Bag_Color__202606062006.jpeg', 'Image/Display 1.jpeg'],
+            caption: 'ကမ်းခြေရှုခင်း', 
+            description: `လှပသော သဲသောင်ပြင်နှင့် ပင်လယ်ရေပြင်တို့ရဲ့ သာယာမှုကို ဒီအိတ်မှာ ဖမ်းစားထားပါတယ်။
+
+အားလပ်ရက်ခရီးအတွက် အထူးသင့်တော်ပြီး သင့်ရဲ့ ခရီးစဉ်ကို ပိုမိုအမှတ်တရဖြစ်စေမှာပါ။
+
+ဒီအိတ်လေးနဲ့ ဆောင်သွားရင် ကမ်းခြေမှာ ဓာတ်ပုံရိုက်ဖို့လည်း အရမ်းလှမှာပါ။`,
+            price: 39900, 
+            category: 'cosmetics' 
+        },
+        { 
+            src: 'Image/JH3.jpeg', 
+            additionalImages: ['Image/JH3.jpeg', 'Image/JH1.jpeg', 'Image/4.jpeg'],
+            caption: 'တောင်တန်းမြင်ကွင်း', 
+            description: `မြူခိုးများဖုံးလွှမ်းနေသော တောင်တန်းကြီးရဲ့ အေးချမ်းမှုကို ဒီအိတ်မှာ ခံစားလိုက်ပါ။
+
+တောင်တန်းရဲ့ ခမ်းနားမှုကို ရောင်ပြန်ဟပ်နေတဲ့ ဒီအိတ်ဟာ တောင်တက်ခရီးစဉ်တွေအတွက် အထူးသင့်တော်ပါတယ်။
+
+ခိုင်ခံ့ပြီး ကြာရှည်ခံတဲ့ ပစ္စည်းတွေနဲ့ ပြုလုပ်ထားလို့ ခရီးရှည်မှာလည်း စိတ်ချရပါတယ်။`,
+            price: 32950, 
+            category: 'other' 
+        },
+        { 
+            src: 'Image/Display 1.jpeg', 
+            additionalImages: ['Image/Display 1.jpeg', 'Image/1.jpeg', 'Image/2.jpeg'],
+            caption: 'အမျိုးသမီးအိတ် (၁)', 
+            description: `ခေတ်ဆန်သော ဒီဇိုင်းဖြင့် နေ့စဉ်သုံးအတွက် အထူးသင့်တော်တဲ့ အိတ်လေးပါ။
+
+ရိုးရှင်းပြီး ကျက်သရေရှိတဲ့ ဒီဇိုင်းဟာ ဘယ်လိုဝတ်စုံနဲ့မဆို လိုက်ဖက်မှာပါ။
+
+အရည်အသွေးကောင်းတဲ့ ပစ္စည်းတွေနဲ့ ပြုလုပ်ထားလို့ ကြာရှည်ခံပြီး အသုံးပြုရလည်း လွယ်ကူပါတယ်။`,
+            price: 19900, 
+            category: 'women' 
+        },
+        { 
+            src: 'Image/JH1.jpeg', 
+            additionalImages: ['Image/JH1.jpeg', 'Image/JH3.jpeg', 'Image/4.jpeg'],
+            caption: 'အမျိုးသားအိတ် (၁)', 
+            description: `စတိုင်ကျသော ဘက်အိတ်ဖြစ်ပြီး အလုပ်သွားရာမှာ ဖက်ရှင်ကျကျ ဆောင်သွားလို့ရပါတယ်။
+
+ဒီအိတ်လေးဟာ သင့်ရဲ့ နေ့စဉ်သုံးပစ္စည်းတွေကို စနစ်တကျ စုစည်းထားနိုင်အောင် ကူညီပေးပြီး သင့်ရဲ့ ပုံရိပ်ကိုလည်း ပိုမိုဆန်းသစ်စေပါတယ်။`,
+            price: 24900, 
+            category: 'men' 
+        },
+        { 
+            src: 'Image/Same_prompt_+_Bag_Color__202606062006.jpeg', 
+            additionalImages: ['Image/Same_prompt_+_Bag_Color__202606062006.jpeg', 'Image/1.jpeg', 'Image/2.jpeg'],
+            caption: 'အလှကုန်သေတ္တာ', 
+            description: `Premium မိတ်ကပ်စုံဖြစ်ပြီး အရည်အသွေးမြင့် ပစ္စည်းများကို စုစည်းထားပါတယ်။
+
+ဒီသေတ္တာလေးထဲမှာ သင်လိုအပ်တဲ့ မိတ်ကပ်ပစ္စည်းတွေ အကုန်လုံးပါဝင်ပြီး အသုံးပြုရလည်း အဆင်ပြေပါတယ်။
+
+အရည်အသွေးမြင့် ပစ္စည်းတွေဖြစ်လို့ သင့်ရဲ့ အသားအရေကို ထိခိုက်မှုမရှိစေဘဲ လှပမှုကို ပေးစွမ်းမှာပါ။`,
+            price: 49900, 
+            category: 'cosmetics' 
+        },
+        // Handmade Category Example
+        { 
+            src: 'Image/handmade1.jpeg', 
+            additionalImages: ['Image/handmade1.jpeg', 'Image/handmade2.jpeg'],
+            caption: 'Handmade Crochet Bag', 
+            description: `လက်လုပ်ပန်းထိုးအိတ်လေး
+💛 100% Handmade
+💛 Premium Quality Yarn
+💛 Unique Design
+💛 Eco-Friendly
+💛 Perfect Gift For Your Loved Ones`,
+            price: 45000, 
+            category: 'handmade' 
+        },
+    ];
+
+    // ================================================================
+    //  HELPER: Format Price with Comma
+    // ================================================================
+    function formatPrice(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // ================================================================
+    //  RENDER
+    // ================================================================
+    const container = document.getElementById('galleryContainer');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalNoteContent = document.getElementById('modalNoteContent');
+    const modalClose = document.getElementById('modalClose');
+
+    const contactPhone = document.getElementById('contactPhone');
+    const copyPhoneBtn = document.getElementById('copyPhoneBtn');
+    const telegramBtn = document.getElementById('telegramBtn');
+    const viberBtn = document.getElementById('viberBtn');
+
+    const sliderTrack = document.getElementById('sliderTrack');
+    const sliderDots = document.getElementById('sliderDots');
+    const sliderPrev = document.getElementById('sliderPrev');
+    const sliderNext = document.getElementById('sliderNext');
+    const sliderCounter = document.getElementById('sliderCounter');
+
+    const zoomOverlay = document.getElementById('zoomOverlay');
+    const zoomImage = document.getElementById('zoomImage');
+    const zoomClose = document.getElementById('zoomClose');
+    const zoomPrev = document.getElementById('zoomPrev');
+    const zoomNext = document.getElementById('zoomNext');
+    const zoomCounter = document.getElementById('zoomCounter');
+
+    let currentItems = [...galleryImages];
+    let currentModalItem = null;
+    let currentSlideIndex = 0;
+    let slideImages = [];
+    let zoomSlideIndex = 0;
+    let zoomImages = [];
+
+    // ===== SLIDER FUNCTIONS =====
+    function updateSlider() {
+        if (!currentModalItem) return;
+        
+        const images = currentModalItem.additionalImages || [currentModalItem.src];
+        slideImages = images;
+        
+        sliderTrack.innerHTML = '';
+        images.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = currentModalItem.caption || 'Product';
+            img.loading = 'lazy';
+            img.onerror = function() {
+                this.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22400%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22300%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2240%22%3E📷%3C/text%3E%3C/svg%3E';
+            };
+            sliderTrack.appendChild(img);
+        });
+        
+        sliderDots.innerHTML = '';
+        images.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('data-index', i);
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            sliderDots.appendChild(dot);
+        });
+        
+        currentSlideIndex = 0;
+        updateSlidePosition();
+        updateCounter();
+    }
+
+    function updateSlidePosition() {
+        const offset = -currentSlideIndex * 100;
+        sliderTrack.style.transform = `translateX(${offset}%)`;
+        
+        const dots = sliderDots.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlideIndex);
+        });
+    }
+
+    function updateCounter() {
+        sliderCounter.textContent = `${currentSlideIndex + 1} / ${slideImages.length}`;
+    }
+
+    function goToSlide(index) {
+        if (index < 0) index = slideImages.length - 1;
+        if (index >= slideImages.length) index = 0;
+        currentSlideIndex = index;
+        updateSlidePosition();
+        updateCounter();
+    }
+
+    function nextSlide() {
+        goToSlide(currentSlideIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentSlideIndex - 1);
+    }
+
+    // ===== ZOOM FUNCTIONS =====
+    function openZoom(index) {
+        zoomImages = slideImages;
+        zoomSlideIndex = index;
+        updateZoomImage();
+        zoomOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeZoom() {
+        zoomOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function updateZoomImage() {
+        if (zoomImages.length > 0 && zoomImages[zoomSlideIndex]) {
+            zoomImage.src = zoomImages[zoomSlideIndex];
+            zoomCounter.textContent = `${zoomSlideIndex + 1} / ${zoomImages.length}`;
+        }
+    }
+
+    function goToZoomSlide(index) {
+        if (index < 0) index = zoomImages.length - 1;
+        if (index >= zoomImages.length) index = 0;
+        zoomSlideIndex = index;
+        updateZoomImage();
+    }
+
+    function nextZoomSlide() {
+        goToZoomSlide(zoomSlideIndex + 1);
+    }
+
+    function prevZoomSlide() {
+        goToZoomSlide(zoomSlideIndex - 1);
+    }
+
+    // ===== TOUCH SWIPE SUPPORT =====
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const imageWrap = document.getElementById('modalImageWrap');
+
+    imageWrap.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    imageWrap.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 30) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    }, { passive: true });
+
+    let zoomTouchStartX = 0;
+    let zoomTouchEndX = 0;
+
+    document.getElementById('zoomContent').addEventListener('touchstart', (e) => {
+        zoomTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.getElementById('zoomContent').addEventListener('touchend', (e) => {
+        zoomTouchEndX = e.changedTouches[0].screenX;
+        const diff = zoomTouchStartX - zoomTouchEndX;
+        if (Math.abs(diff) > 30) {
+            if (diff > 0) {
+                nextZoomSlide();
+            } else {
+                prevZoomSlide();
+            }
+        }
+    }, { passive: true });
+
+    // ===== CLICK ON MODAL IMAGE TO ZOOM =====
+    document.getElementById('modalImageWrap').addEventListener('click', function(e) {
+        if (e.target.closest('.slider-arrow') || e.target.closest('.slider-dots')) return;
+        if (slideImages.length > 0) {
+            openZoom(currentSlideIndex);
+        }
+    });
+
+    // ===== ZOOM EVENT LISTENERS =====
+    zoomClose.addEventListener('click', closeZoom);
+    zoomOverlay.addEventListener('click', function(e) {
+        if (e.target === this) closeZoom();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeZoom();
+        if (e.key === 'ArrowLeft' && zoomOverlay.classList.contains('active')) {
+            prevZoomSlide();
+        }
+        if (e.key === 'ArrowRight' && zoomOverlay.classList.contains('active')) {
+            nextZoomSlide();
+        }
+    });
+
+    zoomPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevZoomSlide();
+    });
+    zoomNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextZoomSlide();
+    });
+
+    // ===== CONTACT FUNCTIONS =====
+    function handleCopyPhone() {
+        const phone = contactPhone.textContent.trim();
+        navigator.clipboard.writeText(phone).then(() => {
+            copyPhoneBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                copyPhoneBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            }, 2000);
+        }).catch(() => {
+            const textArea = document.createElement('textarea');
+            textArea.value = phone;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            copyPhoneBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                copyPhoneBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            }, 2000);
+        });
+    }
+
+    function handleTelegram() {
+        window.open(`https://t.me/crownace06`, '_blank');
+    }
+
+    function handleViber() {
+        const phone = contactPhone.textContent.trim();
+        window.open(`viber://chat?number=${phone.replace('+', '')}`, '_blank');
+    }
+
+    // ===== MODAL FUNCTIONS =====
+    function openModalWithItem(item) {
+        currentModalItem = item;
+        modalCaption.textContent = item.caption || 'ခေါင်းစဉ်မရှိ';
+        modalDescription.textContent = item.description || 'အကြောင်းအရာမရှိသေးပါ';
+        modalPrice.innerHTML = `${formatPrice(item.price || 0)} <span class="currency">MMK</span>`;
+        modalNoteContent.textContent = 'ပစ္စည်များကို မှာယူမည်ဆိုပါက အောက်ပါဖုန်းနံပါတ်၊Viber နဲ့ Telegram တို့ကိုနှိပ်၍မှာယူနိုင်ပါပြီး။';
+        
+        updateSlider();
+        
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        if (zoomOverlay.classList.contains('active')) {
+            closeZoom();
+        }
+    }
+
+    // ===== EVENT LISTENERS =====
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (zoomOverlay.classList.contains('active')) {
+                closeZoom();
+            } else {
+                closeModal();
+            }
+        }
+        if (e.key === 'ArrowLeft' && modalOverlay.classList.contains('active') && !zoomOverlay.classList.contains('active')) {
+            prevSlide();
+        }
+        if (e.key === 'ArrowRight' && modalOverlay.classList.contains('active') && !zoomOverlay.classList.contains('active')) {
+            nextSlide();
+        }
+    });
+
+    sliderPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevSlide();
+    });
+    sliderNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextSlide();
+    });
+
+    copyPhoneBtn.addEventListener('click', handleCopyPhone);
+    telegramBtn.addEventListener('click', handleTelegram);
+    viberBtn.addEventListener('click', handleViber);
+
+    // ===== RENDER GALLERY =====
+    function renderGallery(items) {
+        if (!items || items.length === 0) {
+            container.innerHTML = `<div class="empty-msg" style="grid-column:1/-1; text-align:center; padding:40px; color:#888;"><i class="fas fa-camera"></i> ပုံမရှိသေးပါ။</div>`;
+            return;
+        }
+
+        let html = '';
+        items.forEach((item, index) => {
+            const src = item.src || '';
+            const caption = item.caption || 'ခေါင်းစဉ်မရှိ';
+            const price = item.price || 0;
+            const sparkle1 = `${10 + Math.random() * 80}% ${10 + Math.random() * 80}%`;
+            const sparkle2 = `${10 + Math.random() * 80}% ${10 + Math.random() * 80}%`;
+
+            html += `
+                <div class="gallery-item" data-index="${index}">
+                    <div class="image-wrapper">
+                        <img src="${src}" alt="${caption}" loading="lazy" 
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22400%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22300%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2240%22%3E📷%3C/text%3E%3C/svg%3E'" />
+                    </div>
+                    <div class="info">
+                        <div class="caption">${caption}</div>
+                        <div class="price-row">
+                            <div class="price">${formatPrice(price)} MMK</div>
+                            <button class="order-btn" data-index="${index}"><i class="fas fa-shopping-cart"></i> Order</button>
+                        </div>
+                    </div>
+                    <div class="magic-sparkle" style="top:${sparkle1}; animation-delay:0s;"></div>
+                    <div class="magic-sparkle" style="top:${sparkle2}; animation-delay:1.2s; width:3px; height:3px;"></div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+
+        const cards = container.querySelectorAll('.gallery-item');
+        cards.forEach((card) => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                this.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1) translateY(0)';
+            });
+            card.addEventListener('touchstart', function(e) {
+                const touch = e.touches[0];
+                const rect = this.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -3;
+                const rotateY = ((x - centerX) / centerX) * 3;
+                this.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02) translateY(-4px)`;
+            });
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1) translateY(0)';
+            });
+
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.order-btn')) return;
+                const idxAttr = parseInt(this.getAttribute('data-index'), 10);
+                const item = currentItems[idxAttr];
+                if (!item) return;
+                openModalWithItem(item);
+            });
+
+            const orderBtn = card.querySelector('.order-btn');
+            if (orderBtn) {
+                orderBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const idxAttr = parseInt(this.getAttribute('data-index'), 10);
+                    const item = currentItems[idxAttr];
+                    if (!item) return;
+                    openModalWithItem(item);
+                });
+            }
+        });
+    }
+
+    // ===== TAB LOGIC =====
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    function filterByTab(tab) {
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(tabBtns).find(btn => btn.dataset.tab === tab);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        if (tab === 'all') {
+            currentItems = [...galleryImages];
+        } else {
+            currentItems = galleryImages.filter(item => item.category === tab);
+        }
+        renderGallery(currentItems);
+    }
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterByTab(this.dataset.tab);
+        });
+    });
+
+    const tabBarWrapper = document.getElementById('tabBarWrapper');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 20) {
+            tabBarWrapper.classList.add('scrolled');
+        } else {
+            tabBarWrapper.classList.remove('scrolled');
+        }
+    });
+
+    filterByTab('all');
+</script>
+</body>
+</html>
